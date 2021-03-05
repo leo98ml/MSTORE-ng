@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
+It is a simple front-end project that serves as a client to the rest service progect MSTORE, it is a very simple e-commerce project for university purpose.
+This is also my very first angular project so don't judge
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
