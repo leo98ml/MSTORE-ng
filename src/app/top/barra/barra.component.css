@@ -1,0 +1,11 @@
+
+
+  .spacer {
+    flex: 1;
+  }
+
+  #barra {
+    position: fixed;
+
+    top: 0px;
+  }
