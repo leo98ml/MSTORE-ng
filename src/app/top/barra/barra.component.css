@@ -1,11 +1,11 @@
-
+@import "~bootstrap/dist/css/bootstrap.css";
 
   .spacer {
     flex: 1;
   }
 
-  #barra {
+  /* #barra {
     position: fixed;
 
     top: 0px;
-  }
+  } */

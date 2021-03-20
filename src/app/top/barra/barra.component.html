@@ -1,10 +1,9 @@
 <!-- Toolbar -->
-<div>
-  <p>
+<div class="top">
     <mat-toolbar id="barra" color="primary">
-      <img height="100%" alt="Angular Logo" src="assets/logo.svg" />
+      <img (click)="goHome()" height="100%" alt="Logo" src="assets/logo.svg" />
       <div class="spacer"></div>
-      <button id="login" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+      <button id="login" mat-icon-button class="example-icon" 
         [matMenuTriggerFor]="cart">
         <mat-icon>shopping_cart</mat-icon>
         <mat-menu #cart="matMenu">
@@ -12,7 +11,7 @@
           <button mat-menu-item>Item 2</button>
         </mat-menu>
       </button>
-      <button id="login" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+      <button id="login" mat-icon-button class="example-icon"
         [matMenuTriggerFor]="menuProfile">
         <mat-icon>person</mat-icon>
         <mat-menu #menuProfile="matMenu">
@@ -37,12 +36,12 @@
           </div>
         </mat-menu>
       </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <button mat-icon-button class="example-icon" >
         <button mat-button [matMenuTriggerFor]="menu">
           <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item><img width="25px" height="17px"
+          <button mat-menu-item (click)="goHome()" ><img width="25px" height="17px"
               src="https://www.101domain.com/images/flags/large/DISCOUNT.png"> Offerte</button>
           <button mat-menu-item><img width="30px" height="30px"
               src="https://www.guardian-italia.it/wp-content/uploads/2018/04/320ar.png">Caschi</button>
@@ -55,5 +54,4 @@
         </mat-menu>
       </button>
     </mat-toolbar>
-  </p>
 </div>

@@ -51,6 +51,7 @@
   }
 
   .content {
+    height: 100%;
     display: flex;
     margin: 82px auto 32px;
     padding: 0 16px;
@@ -286,3 +287,4 @@
       visibility: hidden;
     }
   }
+  @import "~bootstrap/dist/css/bootstrap.css";
