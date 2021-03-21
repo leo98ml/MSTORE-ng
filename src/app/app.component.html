@@ -1,13 +1,13 @@
-<div style="height: 100%;">
+<div class="d-flex flex-column h-100 w-100">
   <app-barra>
   </app-barra>
-
-  <div  class="content" role="main">
+  
+  <div  class="flex-grow-1" role="main">
     <router-outlet></router-outlet>
   </div>
   <br>
   <!-- Footer -->
-  <footer class="absolute-bottom">
+  <footer class="">
     <mat-toolbar color="primary">
       <p style="width:100%; align-self: center;" (click)="onAboutUs()">About Us...</p>
     </mat-toolbar>

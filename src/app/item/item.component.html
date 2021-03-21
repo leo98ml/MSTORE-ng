@@ -1,1 +1,76 @@
-<p>item works!</p>
+<!-- <mat-grid-list cols="4" rowHeight="2:1">
+        <mat-grid-tile [colspan]="3" [rowspan]="4" [style.background]="purple">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class=" p-3 col-auto">
+                        <img src="/assets/me.jpg" class="img-fluid rounded" />
+                    </div>
+                </div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="purple">
+            <div class="col">
+                <p id=name>
+                    {{item.name}}
+                </p>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="purple"> <label for="price">
+                Prezzo:
+            </label>
+            <p id=price>
+                {{item.price}}
+            </p>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="purple"><label for="discount">
+                Sconto:
+            </label>
+            <p id=discount>
+                {{item.discountPercentage}}%
+            </p>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1" [style.background]="purple"> <label for="scountedPrice">
+                Prezzo scontato:
+            </label>
+            <p id=scountedPrice>
+                {{item.price-item.price/100*item.discountPercentage}}
+            </p>
+        </mat-grid-tile>
+    </mat-grid-list> -->
+    
+<mat-card (click)="goTo(item)" class="d-flex flex-column h-100">
+    <mat-card-header>
+        <mat-card-title>{{item.name}}</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <img  mat-card-image [src]="item.images">
+    <mat-card-content class="flex-grow-1">
+        <p class="text-justify">
+            <strong>Descrizione: </strong>{{item.description}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <div class="row">
+            <div class="col"><label mat-label for="price">
+                    Prezzo:
+                </label>
+                <button mat-button style="background-color: rgb(240, 197, 6); color: white;"
+                    id=price>{{item.price}}</button>
+            </div>
+            <div *ngIf="item.discount">
+                <div class="col"><label mat-label for="sconto">
+                        Sconto:
+                    </label>
+                    <button mat-button style="background-color: firebrick; color: white;"
+                        id="sconto">{{item.discountPercentage}}%</button>
+                </div>
+                <div class="col"> <label mat-label for="prezzoScontato">
+                        Prezzo scontato:
+                    </label>
+                    <button mat-button style="background-color: rgb(34, 178, 94); color: white;"
+                        id="prezzoScontato">{{item.price-item.price/100*item.discountPercentage}}</button>
+                </div>
+            </div>
+        </div>
+    </mat-card-actions>
+</mat-card>

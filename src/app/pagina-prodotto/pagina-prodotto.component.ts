@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../model/item';
+import { StateServiceService } from '../state-service.service';
 
 @Component({
   selector: 'app-pagina-prodotto',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaginaProdottoComponent implements OnInit {
 
-  constructor() { }
+  item:Item;
+  constructor(private state:StateServiceService) { }
 
   ngOnInit(): void {
+    this.item= this.state.data;
+    console.log(this.item);
   }
 
 }

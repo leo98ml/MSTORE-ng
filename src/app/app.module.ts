@@ -10,6 +10,7 @@ import { MatButtonModule} from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { ItemComponent } from './item/item.component';
 import { ItemContainerComponent } from './item-container/item-container.component';
 import { CartComponentComponent } from './top/cart-component/cart-component.component';
@@ -44,7 +45,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     MatMenuModule,
     MatToolbarModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

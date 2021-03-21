@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Item } from "../model/item";
+import { StateServiceService } from "../state-service.service"
+  
+
 
 @Component({
   selector: 'app-item',
@@ -6,8 +11,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
+  @Input() item:Item;
 
-  constructor() { }
+  purple:String = "primary"
+
+  goTo(item:Item):void{
+    this.state.data=item;
+    this.router.navigate(["show"])
+  }
+
+  constructor(private state:StateServiceService,private router:Router) { }
 
   ngOnInit(): void {
   }
