@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StateServiceService } from 'src/app/state-service.service';
 @Component({
   selector: 'app-barra',
   templateUrl: './barra.component.html',
@@ -7,12 +8,33 @@ import { Router } from '@angular/router';
 })
 export class BarraComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private state:StateServiceService) { }
 
   ngOnInit(): void {
   }
 
   goHome(){
+    this.state.product="offerte";
     this.router.navigate([""]);
+  }
+  logoutAndGoHome(){
+    this.state.logout();
+    this.goHome();
+  }
+  goAnalytics(){
+    this.router.navigate(["i-miei-ordini"]);
+  }
+  goAnagrafica(){
+    this.router.navigate(["anagrafica"])
+  }
+  goRegister(){
+    this.router.navigate(["register"])
+  }
+  goLogin(){
+    this.router.navigate(["login"])
+  }
+  goProduct(type:string){
+    this.state.product=type;
+    this.router.navigate(["listaProdotti"])
   }
 }

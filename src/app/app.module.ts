@@ -21,6 +21,8 @@ import { IMieiOrdiniComponent } from './i-miei-ordini/i-miei-ordini.component';
 import { AnagraficaComponent } from './anagrafica/anagrafica.component';
 import { PaginaProdottoComponent } from './pagina-prodotto/pagina-prodotto.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { CookieService } from 'ngx-cookie-service';
+import { AcquistaComponent } from './acquista/acquista.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     IMieiOrdiniComponent,
     AnagraficaComponent,
     PaginaProdottoComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    AcquistaComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     MatCardModule,
     MatGridListModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

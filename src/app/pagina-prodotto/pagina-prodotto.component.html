@@ -66,7 +66,7 @@
                                         Prezzo scontato:
                                     </label>
                                     <button mat-button style="background-color: rgb(34, 178, 94); color: white;"
-                                        id="prezzoScontato">{{item.price-item.price/100*item.discountPercentage}}</button>
+                                        id="prezzoScontato">{{item.price-item.price/100*item.discountPercentage | number: '1.2-2' }}</button>
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { Item } from 'src/app/model/item';
+import { StateServiceService } from 'src/app/state-service.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartItemComponent implements OnInit {
 
-  constructor() { }
+  @Output() removeItemEvent = new EventEmitter<number>();
+  @Input() item:Item;
+
+  constructor(private router:Router ,private state:StateServiceService) { }
 
   ngOnInit(): void {
+  }
+
+  goTo():void{
+    this.state.data=this.item;
+    this.router.navigate(["show"])
+  }
+
+  remove(){
+    this.removeItemEvent.emit(this.item.id)
   }
 
 }

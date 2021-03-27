@@ -3,35 +3,28 @@
     <mat-toolbar id="barra" color="primary">
       <img (click)="goHome()" height="100%" alt="Logo" src="assets/logo.svg" />
       <div class="spacer"></div>
-      <button id="login" mat-icon-button class="example-icon" 
-        [matMenuTriggerFor]="cart">
-        <mat-icon>shopping_cart</mat-icon>
-        <mat-menu #cart="matMenu">
-          <button mat-menu-item>Item 1</button>
-          <button mat-menu-item>Item 2</button>
-        </mat-menu>
-      </button>
+      <app-cart-component></app-cart-component>
       <button id="login" mat-icon-button class="example-icon"
         [matMenuTriggerFor]="menuProfile">
         <mat-icon>person</mat-icon>
         <mat-menu #menuProfile="matMenu">
-          <div *ngIf="true">
-            <button mat-menu-item>
+          <div *ngIf="false">
+            <button mat-menu-item (click)="goAnalytics()">
               <mat-icon>analytics</mat-icon>I miei ordini
             </button>
-            <button mat-menu-item>
-              <mat-icon>face</mat-icon>Anagrafica
+            <button mat-menu-item  (click)="goAnagrafica()">
+              <mat-icon >face</mat-icon>Anagrafica
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="logoutAndGoHome()">
               <mat-icon>logout</mat-icon>Logout
             </button>
           </div>
-          <div *ngIf="false">
-            <button mat-menu-item>
+          <div *ngIf="true">
+            <button mat-menu-item (click)="goRegister()">
               <mat-icon>app_registration</mat-icon>Register
             </button>
-            <button mat-menu-item>
-              <mat-icon>login</mat-icon>Login
+            <button mat-menu-item (click)="goLogin()">
+              <mat-icon >login</mat-icon>Login
             </button>
           </div>
         </mat-menu>
@@ -43,13 +36,13 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="goHome()" ><img width="25px" height="17px"
               src="https://www.101domain.com/images/flags/large/DISCOUNT.png"> Offerte</button>
-          <button mat-menu-item><img width="30px" height="30px"
-              src="https://www.guardian-italia.it/wp-content/uploads/2018/04/320ar.png">Caschi</button>
-          <button mat-menu-item><img width="30px" height="30px"
+          <button mat-menu-item (click)="goProduct('caschi')"><img width="30px" height="30px" 
+              src="https://www.guardian-italia.it/wp-content/uploads/2018/04/320ar.png" >Caschi</button>
+          <button mat-menu-item (click)="goProduct('giacche')"><img width="30px" height="30px"
               src="https://motocharlietrieste.it/5539-large_default/avro-d2-tex-jacket-858-black-white-red.jpg">Giacche</button>
-          <button mat-menu-item><img width="30px" height="30px"
+          <button mat-menu-item (click)="goProduct('stivali')"><img width="30px" height="30px"
               src="https://data.outletmoto.eu/imgprodotto/stivali-moto-racing-tcx-rt-race-nero-rosso_64355.jpg">Stivali</button>
-          <button mat-menu-item><img width="30px" height="30px"
+          <button mat-menu-item (click)="goProduct('guanti')"><img width="30px" height="30px"
               src="https://www.10hp.it/upload/prodotti/FGS138-1200-METIS-ROSS-953.jpg">Guanti</button>
         </mat-menu>
       </button>
