@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-light">
+                    <article class="card-body mx-auto" style="max-width: 400px;">
+                        <h4 class="card-title mt-3 text-center">Inserisci i tuoi dati: </h4>
+                        <form>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                </div>
+                                <input name ="email"  [(ngModel)]="email" class="form-control" placeholder="Email address" type="email">
+                            </div> 
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input name="password" [(ngModel)]="password" class="form-control" placeholder="Password" type="password">
+                            </div> 
+                            <div class="form-group">
+                                <button [disabled]="email==='' || password ==='' " type="button" (click)="login()" class="btn btn-primary btn-block"> Log In </button>
+                            </div> 
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,15 +1,24 @@
-<button id="login" mat-icon-button class="example-icon" [matMenuTriggerFor]="cart" (removeItemEvent)="remove($event)">
+<button id="login" mat-icon-button class="example-icon" [matMenuTriggerFor]="cart" >
     <mat-icon>shopping_cart</mat-icon>
-    <mat-menu #cart="matMenu">
-        <app-cart-item *ngFor="let item of items" [item]="item"></app-cart-item>
-        <div *ngIf="items.length>0">
-            <button mat-menu-item (click)="acquista()">
-                <div align="center">
-                    <mat-icon>shop</mat-icon> Buy
-                </div>
-            </button>
+    <mat-menu  #cart="matMenu">
+        <app-cart-item *ngFor="let item of mine.buyListItems" (removeItemEvent)="remove($event)" [item]="item"></app-cart-item>
+        <div *ngIf="mine.buyListItems.length>0">
+            <div *ngIf="isUserLogged()">
+                <button mat-menu-item (click)="acquista()">
+                    <div align="center">
+                        <mat-icon>shop</mat-icon> Buy
+                    </div>
+                </button>
+            </div>
+            <div *ngIf="! isUserLogged()">
+                <button mat-menu-item (click)="goLogin()">
+                    <div align="center">
+                        <mat-icon>shop</mat-icon> Buy
+                    </div>
+                </button>
+            </div>
         </div>
-        <div *ngIf="items.length==0">
+        <div *ngIf="mine.buyListItems.length==0">
             <button mat-menu-item>
                 <div align="center">
                     <b>It's empty</b>

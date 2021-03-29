@@ -9,13 +9,13 @@
             <div id="carouselExampleControls">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="img-fluid rounded" [src]="item.images">
+                        <img class="img-fluid rounded" [src]="mine.url+'getImage/'+item.directoryImages +'/'+ counter">
                     </div>
-                    <a class="carousel-control-prev">
+                    <a class="carousel-control-prev" (click)="dec()">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next">
+                    <a class="carousel-control-next pr-5" (click)="inc()">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -35,7 +35,7 @@
             </mat-card>
             <div class="p-3">
                 <label for="addCart" class="addCart">Aggiungi al carrello: </label>
-                <button mat-fab id="addCart" style="border-radius: 100%;" color="primary">
+                <button (click)="add()" mat-fab id="addCart" style="border-radius: 100%;" color="primary">
                     <mat-icon>add_shopping_cart</mat-icon>
                 </button>
             </div>

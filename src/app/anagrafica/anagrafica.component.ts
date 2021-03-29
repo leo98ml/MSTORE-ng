@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../model/user';
+import { StateServiceService } from '../state-service.service';
 
 @Component({
   selector: 'app-anagrafica',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnagraficaComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private state:StateServiceService) {
+    this.mine = state;
+   }
+  submitted:boolean = false;
+  mine:StateServiceService;
   ngOnInit(): void {
+    this.state.getUserByToken();
   }
 
 }

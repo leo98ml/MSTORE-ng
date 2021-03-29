@@ -31,6 +31,9 @@ const routes: Routes = [{
 },
 {
   path: "listaProdotti", component: ItemContainerComponent
+},
+{
+  path: "anagrafica", component: AnagraficaComponent
 }];
 
 @NgModule({

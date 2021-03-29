@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Item } from 'src/app/model/item';
+import { RemoteService } from 'src/app/remote.service';
 import { StateServiceService } from 'src/app/state-service.service';
 
 @Component({
@@ -13,8 +14,10 @@ export class CartItemComponent implements OnInit {
 
   @Output() removeItemEvent = new EventEmitter<number>();
   @Input() item:Item;
-
-  constructor(private router:Router ,private state:StateServiceService) { }
+  mine:RemoteService;
+  constructor(private router:Router ,private state:StateServiceService,private remote:RemoteService) { 
+    this.mine = remote;
+  }
 
   ngOnInit(): void {
   }

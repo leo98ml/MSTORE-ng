@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Item } from "../model/item";
+import { RemoteService } from '../remote.service';
 import { StateServiceService } from "../state-service.service"
   
 
@@ -19,8 +20,10 @@ export class ItemComponent implements OnInit {
     this.state.data=item;
     this.router.navigate(["show"])
   }
-
-  constructor(private state:StateServiceService,private router:Router) { }
+  mine:RemoteService;
+  constructor(private state:StateServiceService,private router:Router,private remote:RemoteService) {
+    this.mine=remote;
+   }
 
   ngOnInit(): void {
   }

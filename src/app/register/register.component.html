@@ -1,1 +1,65 @@
-<p>register works!</p>
+<div>
+    <div class="container p-3">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-light">
+                    <article class="card-body mx-auto" style="max-width: 400px;">
+                        <h4 class="card-title mt-3 text-center">Registrati: </h4>
+                        <form #registration="ngForm">
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i></span>
+                                </div>
+                                <input [ngClass]="{'red': submitted && user.name ===''}" name="user.name" [(ngModel)]="user.name" class="form-control" placeholder="Nome" type="text">
+                            </div>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                </div>
+                                <input [ngClass]="{'red': submitted && user.surname===''}"   name="user.surname" [(ngModel)]="user.surname" class="form-control" placeholder="Cognome" type="text">
+                            </div> 
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                </div>
+                                <input [ngClass]="{'red': submitted && user.email===''}"   name="user.email" [(ngModel)]="user.email" aria-describedby="emailHelp" class="form-control" placeholder="Email address" type="email">
+                            </div> 
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                                </div>
+                                <input [ngClass]="{'red': submitted && user.phone===''}"  name="user.phone" [(ngModel)]="user.phone" class="form-control" placeholder="Telefono" type="text">
+                            </div> 
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i></span>
+                                </div>
+                                <input [ngClass]="{'red': submitted && user.indirizzoSpedizione===''}"  name="user.indirizzoSpedizione"  [(ngModel)]="user.indirizzoSpedizione" class="form-control" placeholder="Indirizzo" type="text">
+                            </div>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input [ngClass]="{'red':( submitted && user.password==='')}"  name="user.password"  [(ngModel)]="user.password" class="form-control" placeholder="Password" type="password">
+                            </div> 
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input [ngClass]="{'red': !(user.password === confirmedPassword)}" name="confirmedPassword" [(ngModel)]="confirmedPassword" class="form-control" placeholder="Ripeti password" type="password" >
+                            </div> 
+                            <div class="form-group">
+                                <button [disabled]="user.password!==confirmedPassword || user.name==='' ||
+                                user.surname==='' || user.email==='' || user.indirizzoSpedizione===''
+                                || user.phone==='' || user.password ==='' " type="button" class="btn btn-primary btn-block" (click)="submit()"> Crea Account </button>
+                            </div> 
+                            <div class="form-group">
+                                <p class="text-center">Già registrato? </p> <button (click)="goLogin()" type="button" class="btn btn-primary btn-block"> Log In </button>
+                            </div> 
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

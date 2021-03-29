@@ -8,9 +8,9 @@
         [matMenuTriggerFor]="menuProfile">
         <mat-icon>person</mat-icon>
         <mat-menu #menuProfile="matMenu">
-          <div *ngIf="false">
-            <button mat-menu-item (click)="goAnalytics()">
-              <mat-icon>analytics</mat-icon>I miei ordini
+          <div *ngIf="mine.isUserLogged">
+            <button mat-menu-item disabled (click)="goAnalytics()">
+              <mat-icon >analytics</mat-icon>I miei ordini
             </button>
             <button mat-menu-item  (click)="goAnagrafica()">
               <mat-icon >face</mat-icon>Anagrafica
@@ -19,7 +19,7 @@
               <mat-icon>logout</mat-icon>Logout
             </button>
           </div>
-          <div *ngIf="true">
+          <div *ngIf="! mine.isUserLogged">
             <button mat-menu-item (click)="goRegister()">
               <mat-icon>app_registration</mat-icon>Register
             </button>

@@ -7,8 +7,10 @@ import { StateServiceService } from 'src/app/state-service.service';
   styleUrls: ['./barra.component.css']
 })
 export class BarraComponent implements OnInit {
-
-  constructor(private router:Router,private state:StateServiceService) { }
+  mine:StateServiceService
+  constructor(private router:Router,private state:StateServiceService) { 
+    this.mine=state;
+  }
 
   ngOnInit(): void {
   }

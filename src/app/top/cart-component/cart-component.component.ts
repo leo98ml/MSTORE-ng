@@ -11,26 +11,26 @@ import { StateServiceService } from 'src/app/state-service.service';
 })
 export class CartComponentComponent implements OnInit {
 
-  items:Item[];
+  mine:StateServiceService;
 
-
-  constructor(private router:Router, private state:StateServiceService,private remote:RemoteService) { }
+  constructor(private router:Router, private state:StateServiceService,private remote:RemoteService) { 
+    this.mine=state;
+  }
 
   ngOnInit(): void {
-    this.items = [];
-    this.items.concat(this.remote.getItemsById(this.state.cartItems));
+
   }
 
   updateLocalCart():void{
     let itemsId:number[] = [];
-    this.items.forEach(element => {
+    this.mine.buyListItems.forEach(element => {
       itemsId.push(element.id)
     });
     this.state.persistCart(itemsId);
   }
 
   remove(itemId:number){
-    this.items = this.items.filter(
+    this.mine.buyListItems = this.mine.buyListItems.filter(
       (item)=>{
         return item.id!=itemId;
       }
@@ -38,13 +38,14 @@ export class CartComponentComponent implements OnInit {
     this.updateLocalCart();
   }
   
-  add(item:Item){
-    this.items.push(item);
-    this.updateLocalCart();
+  
+  isUserLogged(){
+    return this.state.isUserLogged;
   }
-
+  goLogin(){
+    this.router.navigate(["login"]);
+  }
   acquista():void{
-    this.state.buyListItems=this.items;
     this.router.navigate(["acquista"]);
   }
 }
