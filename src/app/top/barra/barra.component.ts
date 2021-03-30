@@ -16,7 +16,6 @@ export class BarraComponent implements OnInit {
   }
 
   goHome(){
-    this.state.product="offerte";
     this.router.navigate([""]);
   }
   logoutAndGoHome(){
@@ -36,7 +35,7 @@ export class BarraComponent implements OnInit {
     this.router.navigate(["login"])
   }
   goProduct(type:string){
-    this.state.product=type;
-    this.router.navigate(["listaProdotti"])
+    let q = { queryParams: { type: type } }
+    this.router.navigate(["listaProdotti"],q)
   }
 }

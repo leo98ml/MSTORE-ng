@@ -9,7 +9,7 @@
         <mat-icon>person</mat-icon>
         <mat-menu #menuProfile="matMenu">
           <div *ngIf="mine.isUserLogged">
-            <button mat-menu-item disabled (click)="goAnalytics()">
+            <button mat-menu-item (click)="goAnalytics()">
               <mat-icon >analytics</mat-icon>I miei ordini
             </button>
             <button mat-menu-item  (click)="goAnagrafica()">

@@ -17,8 +17,7 @@ export class CartComponentComponent implements OnInit {
     this.mine=state;
   }
 
-  ngOnInit(): void {
-
+  ngOnInit(): void {;
   }
 
   updateLocalCart():void{
@@ -30,11 +29,17 @@ export class CartComponentComponent implements OnInit {
   }
 
   remove(itemId:number){
+    let rem: boolean = false;
     this.mine.buyListItems = this.mine.buyListItems.filter(
       (item)=>{
-        return item.id!=itemId;
+        if(rem) return true;
+        else {
+          rem = item.id == itemId;
+          return !rem;
+        }
       }
     )
+    this.mine.lenChanged.emit(1);
     this.updateLocalCart();
   }
   

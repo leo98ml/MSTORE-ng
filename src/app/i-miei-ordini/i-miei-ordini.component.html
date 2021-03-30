@@ -1,1 +1,39 @@
-<p>i-miei-ordini works!</p>
+<div class="container p-5">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center">
+                I MIEI ORDINI:
+            </h1>
+        </div>
+    </div>
+    <div class="row p-3" *ngFor=" let fattura of fatture">
+        <div class="col">
+            <mat-card  class="d-flex flex-column h-100">
+                <mat-card-header>
+                    <mat-card-title>Data ordine: {{fattura.dataOrdine | date }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="flex-grow-1">
+                    <hr>
+                    <p class="text-justify">
+                        Data Consegna: {{fattura.dataConsegna | date}}
+                    </p>
+                    <hr>
+                    <div *ngFor=" let ordine of fattura.ordini " class="text-justify">
+                        <hr>
+                        <p>
+                            <b> Prodotto: </b>{{retrive(ordine.idProdotto)}}
+                        </p>
+                        <hr>
+                        <p>Prezzo: €{{ordine.prezzo-ordine.prezzo/100*ordine.scontoPercentage | number: '1.2-2' }}</p>
+                        <hr>
+                    </div>
+                    <hr>
+                    <p class="text-justify">
+                        <b>Prezzo totale: </b>{{fattura.prezzo}}
+                    </p>
+                    <hr>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

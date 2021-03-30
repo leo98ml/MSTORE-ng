@@ -9,15 +9,22 @@ import { User } from './model/user';
   providedIn: 'root'
 })
 export class RemoteService {
-  
-  
-  
-  url:string = "http://localhost:8080/"
+  async buy(itemsId: number[], sessionToken: string) {
+    let q : string = "buy?token=" +sessionToken;
+    itemsId.forEach((e)=>{q += "&id=" + e})
+    return await this.http.get<boolean>(this.url+q,this.httpOptions).toPromise();
+  }
+  url:string = "http://localhost:8080/MStore/"
+
+  // url:string = "https://1718e48b1cb7.ngrok.io/MStore/"
   httpOptions = {headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Content-Length': '10000000000000',
-    'Host':'mine'
+    'Content-Type':  'application/json'
+    // 'Content-Length': '10000000000000',
+    // 'Host':'mine'
   })};
+  async getByType(type:string) {
+    return await this.http.get<Item[]>(this.url+"getProdotti?type="+type,this.httpOptions).toPromise();
+  }
   async getProdDiscount(sessionToken: string) {
     return await this.http.get<Item[]>(this.url+"getProdottiOfferta",this.httpOptions).toPromise();
   }
@@ -36,12 +43,11 @@ export class RemoteService {
       "password":password
     }),this.httpOptions).toPromise();
   }
-  invalidateSession(sessionToken: string) {
-    // throw new Error('Method not implemented.');
-  }
-  getItemsById(cartItems: string[]):Item[] {
-    return null
-    // throw new Error('Method not implemented.');
+
+  async getItemsById(cartItems: string[]) {
+    let q : string = "getItemsById?dummy=0";
+    cartItems.forEach((e)=>{q += "&id=" + e})
+    return await this.http.get<Item[]>(this.url+q,this.httpOptions).toPromise();
   }
 
 
