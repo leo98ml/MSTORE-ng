@@ -44,5 +44,9 @@ export class ItemContainerComponent implements OnInit {
         }
       });
   }
-
+  discard(){
+    this.prezzoMax=undefined;
+    this.prezzoMin=undefined;
+    this.resize();
+  }
 }

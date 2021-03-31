@@ -35,12 +35,12 @@
             </mat-card>
             <div class="container p-3">
                 <div class="row">
-                    <div class="col-6 p-1">
-                        <div class="form-group input-group">
+                    <div class="col-6 p-1 d-flex align-items-center">
+                        
                             <input min="0" max="10" name ="num" [(ngModel)]="num" class="form-control" placeholder="No. pezzi" type="number">
-                        </div>
+                        
                     </div>
-                    <div class="col-6 p-1">
+                    <div class="col-6 p-1 d-flex align-items-center">
                         <button [disabled]="num==undefined" (click)="add()" mat-fab id="addCart" style="border-radius: 100%;" color="primary">
                             <mat-icon>add_shopping_cart</mat-icon>
                         </button>
