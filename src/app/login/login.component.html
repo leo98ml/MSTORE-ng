@@ -20,7 +20,10 @@
                             </div> 
                             <div class="form-group">
                                 <button [disabled]="email==='' || password ==='' " type="button" (click)="login()" class="btn btn-primary btn-block"> Log In </button>
-                            </div> 
+                            </div>
+                            <div class="form-group">
+                                <p class="text-center">Non sei registrato? </p> <button (click)="goRegister()" type="button" class="btn btn-primary btn-block"> Registrati </button>
+                            </div>
                         </form>
                     </article>
                 </div>

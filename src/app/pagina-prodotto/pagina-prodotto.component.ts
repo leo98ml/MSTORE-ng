@@ -10,6 +10,7 @@ import { StateServiceService } from '../state-service.service';
 })
 export class PaginaProdottoComponent implements OnInit {
   
+  num:number=1;
   mine:RemoteService;
   item:Item;
   constructor(private state:StateServiceService, private remote:RemoteService) { 
@@ -28,6 +29,8 @@ export class PaginaProdottoComponent implements OnInit {
     this.counter++;
   }
   add(){
-    this.state.add(this.item);
+    for (let index = 0; index < this.num; index++) {
+      this.state.add(this.item);
+    }
   }
 }

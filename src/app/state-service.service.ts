@@ -16,6 +16,7 @@ export class StateServiceService {
 
   product: string;
   lenChanged:EventEmitter<number> = new EventEmitter();
+  added:EventEmitter<number> = new EventEmitter();
   erroreAcquista:string=null;
   userLogged:User;
   data: Item;
@@ -48,6 +49,11 @@ export class StateServiceService {
   }
   goneRight(){
     this.buyListItems=[];
+    let itemsId:number[] = [];
+    this.buyListItems.forEach(element => {
+      itemsId.push(element.id)
+    });
+    this.persistCart(itemsId)
     this.router.navigate(["i-miei-ordini"]);
   }
   goneWrong(){
@@ -146,5 +152,6 @@ export class StateServiceService {
       itemsId.push(element.id)
     });
     this.persistCart(itemsId)
+    this.added.emit(1)
   }
 }

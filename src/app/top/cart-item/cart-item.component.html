@@ -1,6 +1,6 @@
 <div mat-menu-item class="h-100 p-1 ">
-    <mat-card class="w-100">
-        <mat-card-header (click)="goTo()">
+    <mat-card class="w-100" >
+        <mat-card-header (click)="goTo()" [matBadge]="badgeNum" matBadgeColor="warn">
             <mat-card-title align="center">{{item.name}}</mat-card-title>
         </mat-card-header>
         <div class="container">

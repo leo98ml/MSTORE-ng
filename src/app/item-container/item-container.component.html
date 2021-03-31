@@ -6,7 +6,28 @@
                 <h1 class="text-center">{{title | uppercase }}</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
+            <div class="col">
+                <div class="row justify-content-center bg-light">
+                    <div class="col-ms-3 p-2">
+                        <div class="form-group input-group">
+                            <input name ="prezzoMin" [(ngModel)]="prezzoMin" class="form-control" placeholder="Prezzo min." type="number">
+                        </div>
+                    </div>
+                    <div class="col-ms-3 p-2">
+                        <div class="form-group input-group">
+                            <input name ="prezzoMax" [(ngModel)]="prezzoMax" class="form-control" placeholder="Prezzo max." type="number">
+                        </div>
+                    </div>
+                    <div class="col-ms-1 p-2">
+                        <div class="form-group">
+                            <button [disabled]="prezzoMin>prezzoMax && prezzoMin!=undefined && prezzoMax!=undefined" type="button" (click)="resize()" class="btn btn-primary btn-block">Filtra</button>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
             <div class="col-md-4 p-3" *ngFor="let item of itemsList">
                 <app-item [item]="item"></app-item>
             </div>

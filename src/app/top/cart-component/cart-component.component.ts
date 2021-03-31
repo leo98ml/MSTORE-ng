@@ -43,6 +43,17 @@ export class CartComponentComponent implements OnInit {
     this.updateLocalCart();
   }
   
+  stretch(list:Item[]):Item[]{
+    let ret:Item[] = [];
+    let ids:number[] = [];
+    list.forEach(e => {
+      if(ids.indexOf(e.id) <0){
+        ids.push(e.id);
+        ret.push(e);
+      }
+    });
+    return ret;
+  }
   
   isUserLogged(){
     return this.state.isUserLogged;

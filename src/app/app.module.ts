@@ -24,6 +24,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AcquistaComponent } from './acquista/acquista.component';
 import { HttpClientModule } from '@angular/common/http';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatGridListModule, 
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatBadgeModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

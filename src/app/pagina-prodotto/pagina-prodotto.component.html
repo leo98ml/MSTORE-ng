@@ -9,7 +9,7 @@
             <div id="carouselExampleControls">
                 <div class="carousel-inner" style="background-color: gray;">
                     <div class="carousel-item active" align="center">
-                        <img  class="img-fluid rounded" [src]="mine.url+'getImage/'+item.directoryImages +'/'+ counter">
+                        <img class="img-fluid rounded" [src]="mine.url+'getImage/'+item.directoryImages +'/'+ counter">
                     </div>
                     <a class="carousel-control-prev" (click)="dec()">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -33,11 +33,19 @@
                     </p>
                 </mat-card-content>
             </mat-card>
-            <div class="p-3">
-                <label for="addCart" class="addCart">Aggiungi al carrello: </label>
-                <button (click)="add()" mat-fab id="addCart" style="border-radius: 100%;" color="primary">
-                    <mat-icon>add_shopping_cart</mat-icon>
-                </button>
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-6 p-1">
+                        <div class="form-group input-group">
+                            <input min="0" max="10" name ="num" [(ngModel)]="num" class="form-control" placeholder="No. pezzi" type="number">
+                        </div>
+                    </div>
+                    <div class="col-6 p-1">
+                        <button [disabled]="num==undefined" (click)="add()" mat-fab id="addCart" style="border-radius: 100%;" color="primary">
+                            <mat-icon>add_shopping_cart</mat-icon>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -66,7 +74,8 @@
                                         Prezzo scontato:
                                     </label>
                                     <button mat-button style="background-color: rgb(34, 178, 94); color: white;"
-                                        id="prezzoScontato">{{item.price-item.price/100*item.discountPercentage | number: '1.2-2' }}</button>
+                                        id="prezzoScontato">{{item.price-item.price/100*item.discountPercentage |
+                                        number: '1.2-2' }}</button>
                                 </div>
                             </div>
                         </div>

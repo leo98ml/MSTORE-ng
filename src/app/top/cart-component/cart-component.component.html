@@ -1,7 +1,10 @@
-<button id="login" mat-icon-button class="example-icon" [matMenuTriggerFor]="cart" >
-    <mat-icon>shopping_cart</mat-icon>
-    <mat-menu  #cart="matMenu">
-        <app-cart-item *ngFor="let item of mine.buyListItems" (removeItemEvent)="remove($event)" [item]="item"></app-cart-item>
+<button id="login" mat-icon-button class="example-icon" [matMenuTriggerFor]="cart">
+    <mat-icon *ngIf="mine.buyListItems.length>0" [matBadge]="mine.buyListItems.length" matBadgeColor="warn">
+        shopping_cart</mat-icon>
+    <mat-icon *ngIf="mine.buyListItems.length==0" matBadgeColor="warn">shopping_cart</mat-icon>
+    <mat-menu #cart="matMenu">
+        <app-cart-item *ngFor="let item of stretch(mine.buyListItems)" [lista] ="mine.buyListItems" (removeItemEvent)="remove($event)" [item]="item">
+        </app-cart-item>
         <div *ngIf="mine.buyListItems.length>0">
             <div *ngIf="isUserLogged()">
                 <button mat-menu-item (click)="acquista()">

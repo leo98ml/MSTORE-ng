@@ -12,12 +12,10 @@ import { User } from './model/user';
 export class RemoteService {
   constructor(private http:HttpClient) { }
 
-  url:string = "http://localhost:8080/MStore/"
-  // url:string = "https://1718e48b1cb7.ngrok.io/MStore/"
+  // url:string = "http://localhost:8080/MStore/"
+  url:string = "https://841ffd67bd1a.ngrok.io/MStore/"
   httpOptions = {headers: new HttpHeaders({
     'Content-Type':  'application/json'
-    // 'Content-Length': '10000000000000',
-    // 'Host':'mine'
   })};
 
   async getFattureByToken(sessionToken: string) {
