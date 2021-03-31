@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { Fattura } from './model/fattura';
 import { Item } from './model/item';
 import { User } from './model/user';
 import { RemoteService } from './remote.service';
@@ -10,15 +11,26 @@ import { RemoteService } from './remote.service';
   providedIn: 'root'
 })
 export class StateServiceService {
-  goneRight(){
-    this.buyListItems=[];
-    this.router.navigate(["i-miei-ordini"]);
-  }
-  goneWrong(){
-    this.erroreAcquista= "C'è stato un problema con l'ordine";
-  }
+
+  constructor(private router: Router, private cookies: CookieService, private remote: RemoteService) { }
+
+  product: string;
   lenChanged:EventEmitter<number> = new EventEmitter();
   erroreAcquista:string=null;
+  userLogged:User;
+  data: Item;
+  sessionToken: string;
+  isUserLogged: boolean =false;
+  cartItems: string[];
+  buyListItems: Item[] = [];
+  retriveFatture(fatture: Fattura[]) {
+    this.remote.getFattureByToken(this.sessionToken).then((s) => {
+      fatture.length=0;
+      s.forEach((i)=>{fatture.push(i)})
+    }, (r) => {
+      console.log("uffa")
+    });
+  }
   buy(itemsId: number[]) {
     this.remote.buy(itemsId,this.sessionToken).then((s) => {
       if(s==true){
@@ -33,14 +45,20 @@ export class StateServiceService {
         this.goneWrong();
       }
     });
-
+  }
+  goneRight(){
+    this.buyListItems=[];
+    this.router.navigate(["i-miei-ordini"]);
+  }
+  goneWrong(){
+    this.erroreAcquista= "C'è stato un problema con l'ordine";
   }
   getByType(itemsList: Item[], type: string) {
     this.remote.getByType(type).then((s) => {
       itemsList.length=0;
       s.forEach((i)=>{itemsList.push(i)})
     }, (r) => {
-      console.log("porca troia")
+      console.log("uffa")
     });
   }
   refreshItemList(itemsList: Item[]) {
@@ -48,20 +66,18 @@ export class StateServiceService {
       itemsList.length=0;
       s.forEach((i)=>{itemsList.push(i)})
     }, (r) => {
-      console.log("porca troia")
+      console.log("uffa")
     });
   }
-  userLogged:User;
   getUserByToken() {
     this.remote.getUserByToken(this.sessionToken).then((s) => {
       if (s != null && s != undefined) {
         this.userLogged=s;
       }
     }, (r) => {
-      console.log("porca troia")
+      console.log("uffa")
     });
   }
-  
   register(user: User) {
     let session: string;
     this.remote.regiter(user).then((s) => {
@@ -103,9 +119,6 @@ export class StateServiceService {
       }
     });
   }
-  product: string;
-  constructor(private router: Router, private cookies: CookieService, private remote: RemoteService) { }
-
   init() {
     this.cartItems = this.cookies.get("m-store-cookie-id-cart-item").split(",");
     this.remote.getItemsById(this.cartItems).then((s) => {
@@ -115,7 +128,6 @@ export class StateServiceService {
     }, (r) => {
       this.buyListItems=[];
     });
-
   }
   persistCart(itemsId: number[]) {
     let items: string = "";
@@ -127,7 +139,6 @@ export class StateServiceService {
     }
     this.cookies.set("m-store-cookie-id-cart-item", items, undefined, undefined, undefined, undefined, "Strict")
   }
-
   add(item:Item){
     this.buyListItems.push(item);
     let itemsId:number[] = [];
@@ -136,9 +147,4 @@ export class StateServiceService {
     });
     this.persistCart(itemsId)
   }
-  data: Item;
-  sessionToken: string;
-  isUserLogged: boolean =false;
-  cartItems: string[];
-  buyListItems: Item[] = [];
 }

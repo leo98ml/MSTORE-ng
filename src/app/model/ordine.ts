@@ -1,5 +1,6 @@
 export class Ordine {
-    idProdotto:number;
+    id:number;
     prezzo:number;
     scontoPercentage:number;
+    nomeProdotto:string;
 }

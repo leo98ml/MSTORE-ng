@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Fattura } from '../model/fattura';
+import { StateServiceService } from '../state-service.service';
 
 @Component({
   selector: 'app-i-miei-ordini',
@@ -7,63 +8,11 @@ import { Fattura } from '../model/fattura';
   styleUrls: ['./i-miei-ordini.component.css']
 })
 export class IMieiOrdiniComponent implements OnInit {
-  fatture: Fattura[] = [
-    {
-      "id": 100,
-      "dataOrdine": new Date(),
-      dataConsegna: new Date(),
-      prezzo: 1000,
-      ordini: [
-        {
-          idProdotto: 189,
-          prezzo: 150,
-          scontoPercentage: 10
-        },{
-          idProdotto: 189,
-          prezzo: 150,
-          scontoPercentage: 10
-        },{
-          idProdotto: 189,
-          prezzo: 150,
-          scontoPercentage: 10
-        },{
-          idProdotto: 189,
-          prezzo: 150,
-          scontoPercentage: 10
-        }
-      ]
-    },{
-      "id": 100,
-      "dataOrdine": new Date(),
-      dataConsegna: new Date(),
-      prezzo: 1000,
-      ordini: [
-        {
-          idProdotto: 189,
-          prezzo: 150,
-          scontoPercentage: 10
-        },{
-          idProdotto: 189,
-          prezzo: 150,
-          scontoPercentage: 10
-        },{
-          idProdotto: 189,
-          prezzo: 150,
-          scontoPercentage: 10
-        },{
-          idProdotto: 189,
-          prezzo: 150,
-          scontoPercentage: 10
-        }
-      ]
-    }
-  ]
-  constructor() { }
+  
+  fatture:Fattura[]= [];
+  constructor( private state : StateServiceService) {}
 
   ngOnInit(): void {
-  }
-
-  retrive(id: number): string {
-    return "gg";
+   this.state.retriveFatture(this.fatture);
   }
 }

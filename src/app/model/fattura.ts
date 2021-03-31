@@ -5,5 +5,5 @@ export class Fattura {
     dataOrdine:Date;
     dataConsegna:Date;
     prezzo:number;
-    ordini:Ordine[];
+    ordine:Ordine[];
 }

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Fattura } from './model/fattura';
 import { Item } from './model/item';
 import { User } from './model/user';
 
@@ -9,19 +10,29 @@ import { User } from './model/user';
   providedIn: 'root'
 })
 export class RemoteService {
-  async buy(itemsId: number[], sessionToken: string) {
-    let q : string = "buy?token=" +sessionToken;
-    itemsId.forEach((e)=>{q += "&id=" + e})
-    return await this.http.get<boolean>(this.url+q,this.httpOptions).toPromise();
-  }
-  url:string = "http://localhost:8080/MStore/"
+  constructor(private http:HttpClient) { }
 
+  url:string = "http://localhost:8080/MStore/"
   // url:string = "https://1718e48b1cb7.ngrok.io/MStore/"
   httpOptions = {headers: new HttpHeaders({
     'Content-Type':  'application/json'
     // 'Content-Length': '10000000000000',
     // 'Host':'mine'
   })};
+
+  async getFattureByToken(sessionToken: string) {
+    return await  this.http.get<Fattura[]>(this.url+"getFattureByToken?token="+sessionToken,this.httpOptions).toPromise();
+  }
+  async getItemsById(cartItems: string[]) {
+    let q : string = "getItemsById?dummy=0";
+    cartItems.forEach((e)=>{q += "&id=" + e})
+    return await this.http.get<Item[]>(this.url+q,this.httpOptions).toPromise();
+  }
+  async buy(itemsId: number[], sessionToken: string) {
+    let q : string = "buy?token=" +sessionToken;
+    itemsId.forEach((e)=>{q += "&id=" + e})
+    return await this.http.get<boolean>(this.url+q,this.httpOptions).toPromise();
+  }
   async getByType(type:string) {
     return await this.http.get<Item[]>(this.url+"getProdotti?type="+type,this.httpOptions).toPromise();
   }
@@ -43,13 +54,4 @@ export class RemoteService {
       "password":password
     }),this.httpOptions).toPromise();
   }
-
-  async getItemsById(cartItems: string[]) {
-    let q : string = "getItemsById?dummy=0";
-    cartItems.forEach((e)=>{q += "&id=" + e})
-    return await this.http.get<Item[]>(this.url+q,this.httpOptions).toPromise();
-  }
-
-
-  constructor(private http:HttpClient) { }
 }
