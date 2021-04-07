@@ -39,6 +39,7 @@ export class CartComponentComponent implements OnInit {
         }
       }
     )
+    this.mine.added.emit(1);
     this.mine.lenChanged.emit(1);
     this.updateLocalCart();
   }

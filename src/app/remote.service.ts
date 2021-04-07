@@ -10,14 +10,14 @@ import { User } from './model/user';
 export class RemoteService {
   constructor(private http:HttpClient) { }
 
-  url:string = "http://localhost:8080/MStore/"
-  // url:string = "https://3c36339aaaa9.ngrok.io/MStore/"
+  // url:string = "http://localhost:8080/MStore/"
+  url:string = "https://2610e9c23504.ngrok.io/MStore/"
   httpOptions = {headers: new HttpHeaders({
     'Content-Type':  'application/json'
   })};
 
   async getFattureByToken(sessionToken: string) {
-    return await  this.http.get<Fattura[]>(this.url+"getFattureByToken?token="+sessionToken,this.httpOptions).toPromise();
+    return await  this.http.get<Fattura[]>(this.url+"getFattureByToken?token="+encodeURIComponent(sessionToken),this.httpOptions).toPromise();
   }
   async getItemsById(cartItems: string[]) {
     let q : string = "getItemsById?dummy=0";
@@ -25,7 +25,7 @@ export class RemoteService {
     return await this.http.get<Item[]>(this.url+q,this.httpOptions).toPromise();
   }
   async buy(itemsId: number[], sessionToken: string) {
-    let q : string = "buy?token=" +sessionToken;
+    let q : string = "buy?token=" +encodeURIComponent(sessionToken);
     itemsId.forEach((e)=>{q += "&id=" + e})
     return await this.http.get<boolean>(this.url+q,this.httpOptions).toPromise();
   }

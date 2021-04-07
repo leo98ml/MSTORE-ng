@@ -47,7 +47,17 @@ export class CartItemComponent implements OnInit{
   }
 
   remove(){
-    this.removeItemEvent.emit(this.item.id)
+    this.removeItemEvent.emit(this.item.id);
   }
 
+  howMany(){
+    
+    this.badgeNum=0;
+    this.lista.forEach(element => {
+      if(element.id==this.item.id){
+        this.badgeNum++;
+      }
+    });
+    return this.badgeNum
+  }
 }
