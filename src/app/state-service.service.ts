@@ -17,7 +17,7 @@ export class StateServiceService {
   product: string;
   lenChanged:EventEmitter<number> = new EventEmitter();
   added:EventEmitter<number> = new EventEmitter();
-  erroreAcquista:string=null;
+  erroreAcquista:boolean=false;
   userLogged:User;
   data: Item;
   sessionToken: string;
@@ -57,7 +57,7 @@ export class StateServiceService {
     this.router.navigate(["i-miei-ordini"]);
   }
   goneWrong(){
-    this.erroreAcquista= "C'è stato un problema con l'ordine";
+    this.erroreAcquista= true;
   }
   getByType(itemsList: Item[], type: string) {
     this.remote.getByType(type).then((s) => {

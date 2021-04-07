@@ -1,7 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Fattura } from './model/fattura';
 import { Item } from './model/item';
 import { User } from './model/user';
@@ -13,7 +11,7 @@ export class RemoteService {
   constructor(private http:HttpClient) { }
 
   url:string = "http://localhost:8080/MStore/"
-  // url:string = "https://841ffd67bd1a.ngrok.io/MStore/"
+  // url:string = "https://3c36339aaaa9.ngrok.io/MStore/"
   httpOptions = {headers: new HttpHeaders({
     'Content-Type':  'application/json'
   })};

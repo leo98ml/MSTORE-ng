@@ -17,6 +17,7 @@ export class AcquistaComponent implements OnInit {
   prezzoTotale:number=0;
   ngOnInit(): void {
     this.update();
+    this.state.erroreAcquista = false;
     this.mine.lenChanged.subscribe(()=>{
       this.update();
     });
